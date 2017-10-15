@@ -1,11 +1,11 @@
 package com.example.thjen.reminderdemo;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -13,7 +13,9 @@ import android.util.Log;
 public class MusicService extends Service {
 
     int id;
-    public static MediaPlayer mediaPlayer;
+    MediaPlayer mediaPlayer;
+    Ringtone ring;
+    Uri ringtone;
 
     @Nullable
     @Override
@@ -37,16 +39,23 @@ public class MusicService extends Service {
         if ( id == 1 ) {
 
             try {
-                mediaPlayer = MediaPlayer.create(this, R.raw.viruss);
-                mediaPlayer.start();
+//                mediaPlayer = MediaPlayer.create(this, R.raw.viruss);
+//                mediaPlayer.start();
+
+                ringtone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+                ring = RingtoneManager.getRingtone(getApplicationContext(), ringtone);
+                ring.play();
+
             } catch (Exception e ) {}
 
             Log.d("music", "Play");
             id = 2;
 
+
         } else {
-            mediaPlayer.stop();
-            mediaPlayer.reset();
+//            mediaPlayer.stop();
+//            mediaPlayer.reset();
+            ring.stop();
         }
 
         return START_NOT_STICKY;

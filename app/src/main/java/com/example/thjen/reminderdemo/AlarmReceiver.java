@@ -51,7 +51,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         //triggered when user clicks on notification(StopScript.class in this case)
 
         PendingIntent contentIntent = PendingIntent.getActivity(context2, 0,
-                new Intent(context2, Alarm.class), PendingIntent.FLAG_UPDATE_CURRENT);
+                new Intent(context2, StopActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
 
         mBuilder.setContentIntent(contentIntent);

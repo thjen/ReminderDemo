@@ -23,11 +23,12 @@ public class Alarm extends AppCompatActivity {
 
     TimePicker timePicker;
     TextView tv;
-    Button btDone, btStop;
+    Button btDone;
+    Button btStop;
 
     AlarmManager alarmManager;
     PendingIntent pendingIntent;
-    int position;
+    public static int position;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
